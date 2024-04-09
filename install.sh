@@ -116,9 +116,9 @@ sudo chown "${uname}" -R /opt/rustdesk
 cd /opt/rustdesk/ || exit 1
 
 #Download latest version of Rustdesk
-RDLATEST=$(curl https://api.github.com/repos/rustdesk/rustdesk-server/releases/latest -s | grep "tag_name"| awk '{print substr($2, 2, length($2)-3) }')
-wget "https://github.com/rustdesk/rustdesk-server/releases/download/${RDLATEST}/rustdesk-server-linux-amd64.zip"
-unzip rustdesk-server-linux-amd64.zip
+RDLATEST=$(curl https://api.github.com/repos/rustdesk/rustdesk-server-pro/releases/latest -s | grep "tag_name"| awk '{print substr($2, 2, length($2)-3) }')
+wget "https://github.com/rustdesk/rustdesk-server-pro/releases/download/${RDLATEST}/rustdesk-server-linux-amd64.zip"
+unzip rustdesk-server-pro-linux-amd64.zip
 mv amd64/* /opt/rustdesk/
 chmod +x /opt/rustdesk/hbbs
 chmod +x /opt/rustdesk/hbbr
