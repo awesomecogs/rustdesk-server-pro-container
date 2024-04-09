@@ -1,16 +1,27 @@
 $ErrorActionPreference= 'silentlycontinue'
 
-If (!(test-path "c:\temp")) {
-    New-Item -ItemType Directory -Force -Path "c:\temp"
-}
-cd c:\temp
+If (!(Test-Path "$ENV:ProgramFiles\Rustdesk\RustDesk.exe")) {
 
-If (!(test-path "C:\Program Files\Rustdesk\RustDesk.exe")) {
-cd c:\temp
-
-Invoke-WebRequest https://github.com/rustdesk/rustdesk/releases/download/1.1.9/rustdesk-1.1.9-windows_x64.zip -Outfile rustdesk.zip
-
-expand-archive rustdesk.zip
-cd rustdesk
-start .\rustdesk-1.1.9-putes.exe --silent-install
+    $rustdesk_url = 'https://github.com/rustdesk/rustdesk/releases/latest'
+    $request = [System.Net.WebRequest]::Create($rustdesk_url)
+    $response = $request.GetResponse()
+    $realTagUrl = $response.ResponseUri.OriginalString
+    $rustdesk_version = $realTagUrl.split('/')[-1].Trim('v')
+    Write-Output("Installing Rustdesk version $rustdesk_version")
+    
+    If (!(Test-Path $ENV:TEMP)) {
+        New-Item -ItemType Directory -Force -Path $ENV:TEMP > null
+    }
+      
+    Set-Location $ENV:TEMP
+  
+    If ([Environment]::Is64BitOperatingSystem) {
+        $os_arch = "x64"
+    } Else {
+        $os_arch = "x32"
+    }
+  
+    Invoke-WebRequest https://github.com/rustdesk/rustdesk/releases/download/$rustdesk_version/rustdesk-$rustdesk_version-windows_$os_arch.exe -Outfile rustdesk.exe
+  
+    Start-Process -FilePath "$($ENV:TEMP)\rustdesk.exe" -ArgumentList "--silent-install" -Wait
 }
