@@ -87,7 +87,7 @@ if [ -f "/public/ip" ];then
 
 	sed -e "s|wanipreg|${wanip}|g" -e "s|keyreg|${key}|g" "${LINUX_SH_INSTALLER_TEMPLATE}" > "/public/${LINUX_SH_INSTALLER_NAME}"
 else
-	echo "Couldn't generate installtion script since the file: /public/ip doesn't exist, you need to define the IP environment varialbe"
+	echo "Couldn't generate installation script since the file: /public/ip doesn't exist, you need to define the IP environment varialbe"
 	echo "If you wish to override the IP with a domain name define both the IP and the DOMAIN variable"
 fi
 
