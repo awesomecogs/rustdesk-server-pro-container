@@ -33,7 +33,7 @@ fi
 
 echo "${NO_PUB_KEY}${NO_SECRET}" | grep "00"
 if [ "$?" -gt "0" ];then
-	echo "Generatiing a new key pair"
+	echo "Generating a new key pair"
 	KEY_PAIR=$(/opt/rustdesk/rustdesk-utils genkeypair )
 	PUBLIC_KEY=$(echo "${KEY_PAIR}"|head -1 |awk '{print $3}')
 	SECRET=$(echo "${KEY_PAIR}"|tail -1 |awk '{print $3}')
