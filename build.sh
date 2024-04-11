@@ -8,21 +8,21 @@ mkdir -p build-dir/linux/{amd64,arm64,arm}
 
 #Download latest version of Rustdesk-server
 RDLATEST=$(curl https://api.github.com/repos/rustdesk/rustdesk-server-pro/releases/latest -s | grep "tag_name"| awk '{print substr($2, 2, length($2)-3) }')
-wget "https://github.com/rustdesk/rustdesk-server-pro/releases/download/${RDLATEST}/rustdesk-server-linux-amd64.tar.gz" -O "build-dir/linux/amd64/rustdesk-server-pro-linux-amd64.tar.gz"
+wget "https://github.com/rustdesk/rustdesk-server-pro/releases/download/${RDLATEST}/rustdesk-server-linux-amd64.tar.gz" -O "build-dir/linux/amd64/rustdesk-server-linux-amd64.tar.gz"
 cd build-dir/linux/amd64/ && tar -xzvf rustdesk-server-linux-amd64.tar.gz && cd -
 chmod +x "build-dir/linux/amd64/amd64/hbbs"
 chmod +x "build-dir/linux/amd64/amd64/hbbr"
 chmod +x  "build-dir/linux/amd64/amd64/rustdesk-utils"
 mv -v build-dir/linux/amd64/amd64/* build-dir/linux/amd64/
 
-wget "https://github.com/rustdesk/rustdesk-server-pro/releases/download/${RDLATEST}/rustdesk-server-linux-arm64v8.tar.gz" -O "build-dir/linux/arm64/rustdesk-server-pro-linux-arm64v8.tar.gz"
+wget "https://github.com/rustdesk/rustdesk-server-pro/releases/download/${RDLATEST}/rustdesk-server-linux-arm64v8.tar.gz" -O "build-dir/linux/arm64/rustdesk-server-linux-arm64v8.tar.gz"
 cd build-dir/linux/arm64/ && tar -xzvf rustdesk-server-linux-arm64v8.tar.gz && cd -
 chmod +x "build-dir/linux/arm64/arm64v8/hbbs"
 chmod +x "build-dir/linux/arm64/arm64v8/hbbr"
 chmod +x  "build-dir/linux/arm64/arm64v8/rustdesk-utils"
 mv -v build-dir/linux/arm64/arm64v8/* build-dir/linux/arm64/
 
-wget "https://github.com/rustdesk/rustdesk-server-pro/releases/download/${RDLATEST}/rustdesk-server-linux-armv7.tar.gz" -O "build-dir/linux/arm/rustdesk-server-pro-linux-armv7.tar.gz"
+wget "https://github.com/rustdesk/rustdesk-server-pro/releases/download/${RDLATEST}/rustdesk-server-linux-armv7.tar.gz" -O "build-dir/linux/arm/rustdesk-server-linux-armv7.tar.gz"
 cd build-dir/linux/arm/ && tar -xzvf rustdesk-server-linux-armv7.tar.gz && cd -
 chmod +x "build-dir/linux/arm/armv7/hbbs"
 chmod +x "build-dir/linux/arm/armv7/hbbr"
