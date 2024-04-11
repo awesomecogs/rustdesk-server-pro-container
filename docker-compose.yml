@@ -1,8 +1,8 @@
 version: '3.8'
 
 services:
-  rustdesk-server:
-    container_name: rustdesk-server
+  rustdesk-server-pro:
+    container_name: rustdesk-server-pro
     ports:
       - 21115:21115
       - 21116:21116
@@ -11,9 +11,9 @@ services:
       - 21118:21118
       - 21119:21119
       - 8080:8080
-    image: elicro/rustdesk-server:latest
+    image: awesomecogs/rustdesk-server-pro:latest
     environment:
-      - TZ=Asia/Jerusalem
+      - TZ=America/Chicago
       - IP=172.20.0.91
       - DOMAIN=172.20.0.91
       - RELAY=172.20.0.91
